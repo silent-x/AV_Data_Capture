@@ -350,7 +350,12 @@ def paste_file_to_folder(filepath, path, number, c_word, conf: config.Config):  
     try:
         # 如果soft_link=1 使用软链接
         if conf.soft_link():
-            os.symlink(filepath, path + '/' + number + c_word + houzhui)
+            mappingPath = os.environ["JAV_PATH"]
+            if mappingPath is not None and len(mappingPath) > 0:
+                src=filepath.replace("./data/", mappingPath +"/")
+            else:
+                src=filepath
+            os.symlink(src, path + '/' + number + c_word + houzhui)
         else:
             os.rename(filepath, path + '/' + number + c_word + houzhui)
         if os.path.exists(os.getcwd() + '/' + number + c_word + '.srt'):  # 字幕移动
