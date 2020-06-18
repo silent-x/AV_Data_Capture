@@ -4,6 +4,8 @@ services:
     user: "${JAVUID}:${JAVGID}"
     image: jav:local
     build: .
+    environment:
+      - JAV_PATH=${JAV_PATH}
     volumes:
       - ./config.ini:/jav/config.ini
       - ${JAV_PATH}:/jav/data
