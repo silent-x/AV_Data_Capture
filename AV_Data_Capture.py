@@ -76,7 +76,10 @@ def create_data_and_move(file_path: str, c: config.Config):
 
         if c.soft_link():
             print("[-]Link {} to failed folder".format(file_path))
-            os.symlink(file_path, str(os.getcwd()) + "/" + conf.failed_folder() + "/")
+            dst=conf.failed_folder() + "/" + os.path.basename(file_path)
+            if os.path.lexists(dst):
+                os.unlink(dst)
+            os.symlink(file_path, dst)
         else:
             try:
                 print("[-]Move [{}] to failed folder".format(file_path))
