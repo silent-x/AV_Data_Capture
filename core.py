@@ -355,7 +355,8 @@ def paste_file_to_folder(filepath, path, number, c_word, conf: config.Config):  
                 src=filepath.replace("./data/", mappingPath +"/")
             else:
                 src=filepath
-            os.symlink(src, path + '/' + number + c_word + houzhui)
+            origin_filename=os.path.basename(src)
+            os.symlink(src, path + '/' + number + c_word +"."+ origin_filename)
         else:
             os.rename(filepath, path + '/' + number + c_word + houzhui)
         if os.path.exists(os.getcwd() + '/' + number + c_word + '.srt'):  # 字幕移动
