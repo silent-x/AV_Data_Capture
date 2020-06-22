@@ -270,7 +270,7 @@ def print_files(path, c_word, naming_rule, part, cn_sub, json_data, filepath, fa
             os.makedirs(path)
         origin_filename=os.path.basename(filepath)
         origin_filename_noExt = origin_filename.split(".")[0]
-        with open(path + "/" + number + part + c_word + ".nfo", "wt", encoding='UTF-8') as code:
+        with open(path + "/" + number + part + c_word + "."+ origin_filename_noExt  + ".nfo", "wt", encoding='UTF-8') as code:
             print('<?xml version="1.0" encoding="UTF-8" ?>', file=code)
             print("<movie>", file=code)
             print(" <title>" + naming_rule + "</title>", file=code)
