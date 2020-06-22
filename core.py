@@ -268,6 +268,8 @@ def print_files(path, c_word, naming_rule, part, cn_sub, json_data, filepath, fa
     try:
         if not os.path.exists(path):
             os.makedirs(path)
+        origin_filename=os.path.basename(filepath)
+        origin_filename_noExt = origin_filename.split(".")[0]
         with open(path + "/" + number + part + c_word + ".nfo", "wt", encoding='UTF-8') as code:
             print('<?xml version="1.0" encoding="UTF-8" ?>', file=code)
             print("<movie>", file=code)
